@@ -21,8 +21,10 @@ public class Producto implements Serializable{
 	private String nombre;
 	private Double precio;
 	
+	// "createAt" por la base de datos H2 con el tipo de dato DATE 
+	@Column(name = "create_at")
 	@Temporal(TemporalType.DATE)
-	private Date fechaCreacion;
+	private Date createAt;   
 	
 	
 	public Long getId() {
@@ -44,10 +46,10 @@ public class Producto implements Serializable{
 		this.precio = precio;
 	}
 	public Date getCreateAt() {
-		return fechaCreacion;
+		return createAt;
 	}
 	public void setCreateAt(Date createAt) {
-		this.fechaCreacion = createAt;
+		this.createAt = createAt;
 	}
 	
 	
