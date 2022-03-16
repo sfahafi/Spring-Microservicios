@@ -37,7 +37,25 @@ public class ProductoController {
 	@GetMapping("/ver/{id}")
 	public Producto detalle(@PathVariable Long id) {
 		Producto producto = ips.buscarPorId(id);
-		producto.setPort(Integer.parseInt(env.getProperty("local.server.port")));
+		//producto.setPort(Integer.parseInt(env.getProperty("local.server.port")));
+		producto.setPort(port);
+		
+		/*
+		// Codigo para provocar error y probar la respuesta alternativa o circuitBreaker
+		boolean ok = false;
+		if(!ok) {
+			throw new RuntimeException("No se pudo cargar el producto!");
+		}*/
+		
+		/*
+		// codigo para probar la configuracion timeout en Hystrix y Ribbon
+		try {
+			Thread.sleep(2000L);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		
 		return producto;
 	}
 
